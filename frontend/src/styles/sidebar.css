@@ -1,0 +1,132 @@
+/* ==========================================
+   Sidebar
+========================================== */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:220px;
+    height:100vh;
+    background:#111827;
+    border-right:1px solid rgba(255,255,255,0.08);
+    padding:25px 18px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+}
+
+/* ==========================================
+   Logo
+========================================== */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.logo-icon{
+    font-size:34px;
+    color:#3B82F6;
+}
+
+.logo h2{
+    font-size:24px;
+    color:#fff;
+    line-height:1;
+}
+
+.logo span{
+    font-size:14px;
+    color:#60A5FA;
+}
+
+/* ==========================================
+   Menu
+========================================== */
+
+.menu{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.menu li{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border-radius:14px;
+    color:#CBD5E1;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+    font-weight:500;
+}
+
+.menu li svg{
+    font-size:18px;
+    min-width:20px;
+}
+
+.menu li:hover{
+    background:#1E293B;
+    color:#fff;
+}
+
+.menu li.active{
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+    color:#fff;
+    box-shadow:0 12px 25px rgba(37,99,235,.35);
+}
+
+/* ==========================================
+   Logout
+========================================== */
+
+.logout{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border-radius:14px;
+    color:#FB7185;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+}
+
+.logout:hover{
+    background:#1E293B;
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media(max-width:900px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .menu{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .logout{
+        justify-content:center;
+        margin-top:20px;
+    }
+
+}

@@ -1,0 +1,103 @@
+/* ==========================================
+   Charts Section
+========================================== */
+
+.charts{
+    width:100%;
+    margin-top:10px;
+}
+
+/* Two Chart Layout */
+
+.bottom{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+    width:100%;
+    align-items:stretch;
+}
+
+/* Chart Card */
+
+.panel{
+    background:#111827;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:.3s;
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+}
+
+.panel:hover{
+    transform:translateY(-5px);
+}
+
+.panel h2{
+    color:#ffffff;
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+/* Recharts */
+
+.recharts-wrapper{
+    margin:auto;
+    margin-top: 10px;
+}
+
+.recharts-cartesian-grid line{
+    stroke:#334155;
+}
+
+.recharts-text{
+    fill:#CBD5E1;
+    font-size:13px;
+}
+
+.recharts-default-tooltip{
+    background:#111827 !important;
+    border:1px solid #334155 !important;
+    border-radius:12px !important;
+}
+
+.recharts-tooltip-label{
+    color:white !important;
+}
+
+.recharts-legend-item-text{
+    color:#CBD5E1 !important;
+}
+
+.recharts-pie-label-text{
+    fill:white !important;
+    font-size:13px;
+}
+
+/* Responsive */
+
+@media(max-width:1100px){
+
+    .bottom{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        min-height:380px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .panel{
+        padding:20px;
+    }
+
+    .panel h2{
+        font-size:20px;
+    }
+
+}
