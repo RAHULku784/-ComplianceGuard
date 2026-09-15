@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: complianceguard_db
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-complianceguard}
+      POSTGRES_USER: ${POSTGRES_USER:-compliance_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-compliance_secure_pass123}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-compliance_user} -d ${POSTGRES_DB:-complianceguard}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: complianceguard_backend
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-compliance_user}:${POSTGRES_PASSWORD:-compliance_secure_pass123}@db:5432/${POSTGRES_DB:-complianceguard}
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: complianceguard_frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
+    driver: local
